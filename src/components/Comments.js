@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
-export default function Comments({ comments }) {
+export default function Comments({ getCommentIds, match }) {
+  useEffect(() => {
+    getCommentIds(match.params.id);
+    //eslint-disable-next-line
+  }, []);
   return (
     <div>
-      <p>{JSON.stringify(comments)}</p>
+      <p>hello</p>
     </div>
   );
 }

@@ -9,5 +9,5 @@ export const getStory = async (storyId) => {
 };
 export const getStoryIds = async () => {
   const res = await axios.get(topStoryUrl);
-  return res.data.slice(0, 20);
+  return res.data.slice(0, 10);
 };
