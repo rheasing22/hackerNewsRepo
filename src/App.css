@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+  color: #e17055;
+}
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.active {
+  font-weight: bold;
+}
+.nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-link a {
+  margin: 10px;
+  text-transform: uppercase;
+  color: inherit;
+  letter-spacing: 2px;
+}
+.story {
+  width: 80%;
+  margin: 10px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+.story .story-title {
+  margin-bottom: 4px;
+}
+.story .story-title a:link,
+.story .story-title a:visited {
+  font-size: 18px;
+  color: #e17055;
+}
+.story .story-title a:hover,
+.story .story-title a:active {
+  text-decoration: none;
+}
+.story .story-info {
+  color: #b55a44;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+}
+.story .story-info span {
+  margin: 4px;
+}
+.story .story-info a {
+  color: inherit;
+}
+.header-comments {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-comments a {
+  display: inline-block;
+}
+.header-comments button {
+  padding: 0.3rem 0.8rem;
+}

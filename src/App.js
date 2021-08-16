@@ -2,15 +2,15 @@ import Stories from "./components/Stories";
 import { getStoryIds } from "./services/hnApi";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Comments from "./components/Comments";
 const baseUrl = "https://hacker-news.firebaseio.com/v0/";
-const topStoryUrl = `${baseUrl}topstories.json`;
 const storyUrl = `${baseUrl}item/`;
 
 function App() {
   const [storyIds, setStoryIds] = useState([]);
-  const [comment, setComment] = useState([]);
+  const [storyForComment, setStoryForComment] = useState({});
 
   useEffect(() => {
     getStoryIds().then((data) => setStoryIds(data));
@@ -18,16 +18,14 @@ function App() {
     //eslint-disable-next-line
   }, []);
 
-  const getComment = async (storyId) => {
+  const getStoryForComment = async (storyId) => {
     const res = await axios.get(`${storyUrl + storyId}.json`);
-    setComment(res.data);
+    setStoryForComment(res.data);
   };
 
-  console.log(storyIds);
   return (
     <Router>
       <div>
-        <p>hello</p>
         <Switch>
           <Route
             exact
@@ -36,9 +34,13 @@ function App() {
           />
           <Route
             exact
-            path="/story/:id"
+            path="/:id"
             render={(props) => (
-              <Comments {...props} getComment={getComment} comment={comment} />
+              <Comments
+                {...props}
+                getStoryForComment={getStoryForComment}
+                storyForComment={storyForComment}
+              />
             )}
           />
         </Switch>

@@ -11,3 +11,12 @@ export const getStoryIds = async () => {
   const res = await axios.get(topStoryUrl);
   return res.data.slice(0, 10);
 };
+
+export const getCommentItem = async (commentId) => {
+  const res = await axios.get(`${storyUrl + commentId}.json`, {
+    params: {
+      _limit: 20,
+    },
+  });
+  return res.data;
+};
