@@ -13,10 +13,6 @@ export const getStoryIds = async () => {
 };
 
 export const getCommentItem = async (commentId) => {
-  const res = await axios.get(`${storyUrl + commentId}.json`, {
-    params: {
-      _limit: 20,
-    },
-  });
+  const res = await axios.get(`${storyUrl + commentId}.json`);
   return res.data;
 };
