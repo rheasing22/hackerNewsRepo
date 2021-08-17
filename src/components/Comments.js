@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import Comment from "./Comment";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
-function Comments({ getStoryForComment, storyForComment, match }) {
+function Comments({ getStoryForComment, storyForComment, loading, match }) {
   useEffect(() => {
     getStoryForComment(match.params.id);
 
@@ -12,7 +13,9 @@ function Comments({ getStoryForComment, storyForComment, match }) {
 
   let { kids } = storyForComment;
 
-  if (kids !== undefined) {
+  if (loading) {
+    return <Loading />;
+  } else if (kids !== undefined) {
     return (
       <>
         <div className="header-comments">
@@ -34,6 +37,7 @@ function Comments({ getStoryForComment, storyForComment, match }) {
 Comments.propTypes = {
   getStoryForComment: PropTypes.func.isRequired,
   storyForComment: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default Comments;

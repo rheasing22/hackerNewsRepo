@@ -46,6 +46,7 @@ function App() {
                 {...props}
                 getStoryForComment={getStoryForComment}
                 storyForComment={storyForComment}
+                loading={loading}
               />
             )}
           />
