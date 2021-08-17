@@ -11,13 +11,16 @@ export default function Comment({ commentId }) {
   }, []);
 
   const { by, text } = commentItem;
-
-  return (
-    <div className="story">
-      <div className="story-title">{by}</div>
-      <div className="story-info">
-        <Markup content={text} />
+  if (!text || !by) {
+    return null;
+  } else {
+    return (
+      <div className="story">
+        <div className="story-title">{by}</div>
+        <div className="story-info">
+          <Markup content={text} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }

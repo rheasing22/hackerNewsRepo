@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import Stories from "./components/Stories";
-import { getStoryIds } from "./services/hnApi";
 import Comments from "./components/Comments";
 import NotFound from "./components/NotFound";
 
 const baseUrl = "https://hacker-news.firebaseio.com/v0/";
 const storyUrl = `${baseUrl}item/`;
+const topStoryUrl = `${baseUrl}topstories.json`;
 
 function App() {
   const [storyIds, setStoryIds] = useState([]);
@@ -16,10 +16,13 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    getStoryIds().then((data) => setStoryIds(data));
-    setLoading(false);
-    //eslint-disable-next-line
+    const getStoryIds = async () => {
+      setLoading(true);
+      const res = await axios.get(topStoryUrl);
+      setStoryIds(res.data.slice(0, 10));
+      setLoading(false);
+    };
+    getStoryIds();
   }, []);
 
   const getStoryForComment = async (storyId) => {

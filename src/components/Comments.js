@@ -25,13 +25,14 @@ function Comments({ getStoryForComment, storyForComment, loading, match }) {
           <h1>Top 20 Comments</h1>
         </div>
 
-        {kids.map((commentId) => (
+        {kids.slice(0, 20).map((commentId) => (
           <Comment key={commentId} commentId={commentId} />
         ))}
       </>
     );
   } else {
-    return null;
+    return <div>undefined</div>;
+    // return null;
   }
 }
 Comments.propTypes = {

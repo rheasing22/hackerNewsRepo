@@ -21,10 +21,13 @@ export default function Story({ storyId }) {
           </a>
         </div>
         <div className="story-info">
-          <Link to={`/${storyId}`}>Comments</Link>
-          <span id="noOfComments">{`${
-            kids && kids.length > 0 ? kids.length : 0
-          } comments`}</span>
+          <span id="noOfComments">
+            {kids && kids.length > 0 ? (
+              <Link to={`/${storyId}`}>Comments</Link>
+            ) : (
+              "No comments"
+            )}
+          </span>
         </div>
       </div>
     </>
