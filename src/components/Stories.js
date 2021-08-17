@@ -1,6 +1,7 @@
 import React from "react";
 import Story from "../components/Story";
 import Loading from "../components/Loading";
+import PropTypes from "prop-types";
 
 function Stories({ storyIds, loading }) {
   if (loading) {
@@ -16,5 +17,10 @@ function Stories({ storyIds, loading }) {
     );
   }
 }
+
+Stories.propTypes = {
+  storyIds: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
+};
 
 export default Stories;

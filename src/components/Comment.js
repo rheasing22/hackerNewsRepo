@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getCommentItem } from "../services/hnApi";
 import { Markup } from "interweave";
+import PropTypes from "prop-types";
 
-export default function Comment({ commentId }) {
+function Comment({ commentId }) {
   const [commentItem, setCommentItem] = useState({});
   useEffect(() => {
     getCommentItem(commentId).then((data) => data && setCommentItem(data));
@@ -24,3 +25,9 @@ export default function Comment({ commentId }) {
     );
   }
 }
+
+Comment.propTypes = {
+  commentId: PropTypes.number.isRequired,
+};
+
+export default Comment;

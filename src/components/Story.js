@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getStory } from "../services/hnApi";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-export default function Story({ storyId }) {
+function Story({ storyId }) {
   const [story, setStory] = useState({});
   useEffect(() => {
     getStory(storyId).then((data) => data && setStory(data));
@@ -33,3 +34,9 @@ export default function Story({ storyId }) {
     </>
   );
 }
+
+Story.propTypes = {
+  storyId: PropTypes.number.isRequired,
+};
+
+export default Story;
